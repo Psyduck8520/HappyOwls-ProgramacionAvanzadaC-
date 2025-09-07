@@ -1,0 +1,19 @@
+cat > .gitignore << 'EOF'
+# Visual Studio / .NET
+.vs/
+bin/
+obj/
+Debug/
+Release/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDEs
+.vscode/
+.idea/
+
+# Otros
+*.log
+EOF
