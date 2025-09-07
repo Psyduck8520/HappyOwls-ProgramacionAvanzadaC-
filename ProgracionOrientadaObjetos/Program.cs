@@ -20,9 +20,14 @@ Console.WriteLine(beer.GetInfo());
 // tambine un cosntructor tiene un cuerpo vacio y lo podemos cargar cuando se crean
 // tiene que tener el mismo nombre de la clase 
 
-Beer beer = new Beer("Corona", 20);
-var cornaBeer = new Beer("Corona", 20); 
+Beer beer = new Beer("Corona", 20, -24);
+var cornaBeer = new Beer("Corona", 20, 3023); 
 
 Console.WriteLine(beer.GetInfo());
 // de testa manera tenemos la certeza de que la cerveza siempre va a tener un nombre y un precio 
 
+Console.WriteLine(beer.SAlcohol);  
+
+var delirium  = new ExpiringBeer("Delirium Tremens", 50, 8.5m, new DateTime(2024, 10, 20));
+
+Console.WriteLine(delirium.GetInfo());
