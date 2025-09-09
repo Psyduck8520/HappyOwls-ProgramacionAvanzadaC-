@@ -36,15 +36,17 @@ namespace ProgracionOrientadaObjetos.Business
         }
 
         //Sobrecarga de metodos, podemos tener varios metodos con el mismo nombre pero con diferente firma o diferente parametro 
+        
+        public virtual string GetInfo() // Estos si se puede sobreescribir en las clases hijas  por que tiene virtual
+        // tambiene es importante qu no debe tener parametros 
+        {
+            return "Nombre:" + Name +  ", Precio" + Price + "Alchol" + Alcohol 
+            ;
+        }
 
         public string getInfo(string message)
         {
             return   message  + " " + GetInfo();
-        }
-
-        public string GetInfo()
-        {
-            return $"La cerveza es {Name} y su precio es {Price} pesos , alcohol  {Alcohol}  ";
         }
         // metodo contructor 
 

@@ -19,7 +19,11 @@ namespace ProgracionOrientadaObjetos.Business
         {
              this.Expiration = expirationDate; //  solo le mandamos la propiedade del hijo
         }
-         
+        public override string GetInfo() // sobreescribimos el metodo de la clase base 
+        {
+            return  $"Aqui estamos llamando desde el hijo: {Expiration.ToShortDateString()}"; // llamamos al metodo de la clase base y le agregamos mas informacion 
+        }
+
     }
 }
 
