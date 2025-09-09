@@ -20,15 +20,18 @@ Console.WriteLine(beer.GetInfo());
 // tambine un cosntructor tiene un cuerpo vacio y lo podemos cargar cuando se crean
 // tiene que tener el mismo nombre de la clase 
 
-Beer beer = new Beer("Corona", 20, -24);
-var cornaBeer = new Beer("Corona", 20, 3023); 
+Beer beer = new Beer("Corona", 20, -24, 1000);  // aki tenemos que cambiar por que obviamente cambioel constructor 
+var cornaBeer = new Beer("Corona", 20, 3023, 100); // aki tambien cambiamos por que  cambio el contructor
+
+Drink drink  = new Beer("Pepsi", 15, 0.0m, 500); // Podemos crear un objeto drink a partir de su hijo pero no directamente de drink por que es abstracta ,
+                                                 // pero solo tendriamos los metodos y propiedades de drink  osea no se puede usar los metodos de  beer 
 
 Console.WriteLine(beer.GetInfo());
 // de testa manera tenemos la certeza de que la cerveza siempre va a tener un nombre y un precio 
 
 Console.WriteLine(beer.SAlcohol);  
 
-var delirium  = new ExpiringBeer("Delirium Tremens", 50, 8.5m, new DateTime(2024, 10, 20));
+var delirium  = new ExpiringBeer("Delirium Tremens", 50, 8.5m, new DateTime(2024, 10, 20), 1000);
 
 Console.WriteLine(delirium.GetInfo());
 Console.WriteLine(delirium.getInfo("esta es una nueva  frase"));

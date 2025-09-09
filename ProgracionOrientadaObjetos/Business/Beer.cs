@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProgracionOrientadaObjetos.Business
 {
-    public class Beer
+    public class Beer : Drink
     {
+        private const string  Category = "Cerveza"; // campo constante
         private decimal _alcohol; // soin campos
         public string Name { get; set; } // Propiedades
 
@@ -50,11 +51,18 @@ namespace ProgracionOrientadaObjetos.Business
         }
         // metodo contructor 
 
-        public Beer(string nombre, decimal price, decimal alcohol)
+        public Beer(string nombre, decimal price, decimal alcohol,  int quantity)
+            : base(quantity) // llamamos al constructor de la clase base , por que revuerda que esto es del padre 
         {
-            this.Name = "Desconocida";
-            this.Price = "0";
+            this.Name = nombre;
+            this.Price = price.ToString();
             Alcohol = alcohol; // llamamos a la propiedad
         }
+      
+        public override string GetCategory()
+        {
+            return Category;
+        }
+
     }
 }
