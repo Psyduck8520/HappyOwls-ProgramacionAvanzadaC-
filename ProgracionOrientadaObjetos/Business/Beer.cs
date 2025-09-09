@@ -35,6 +35,13 @@ namespace ProgracionOrientadaObjetos.Business
             get { return $" Alcohol    {_alcohol}%"; }
         }
 
+        //Sobrecarga de metodos, podemos tener varios metodos con el mismo nombre pero con diferente firma o diferente parametro 
+
+        public string getInfo(string message)
+        {
+            return   message  + " " + GetInfo();
+        }
+
         public string GetInfo()
         {
             return $"La cerveza es {Name} y su precio es {Price} pesos , alcohol  {Alcohol}  ";
