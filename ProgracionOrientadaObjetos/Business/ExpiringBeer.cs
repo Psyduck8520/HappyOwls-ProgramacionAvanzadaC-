@@ -14,8 +14,8 @@ namespace ProgracionOrientadaObjetos.Business
         {
              get; set; 
         }
-        public ExpiringBeer(string nombre, decimal price, decimal alcohol, DateTime expirationDate)
-            : base(nombre, price, alcohol) // Llamada al constructor de la clase base 
+        public ExpiringBeer(string nombre, decimal price, decimal alcohol, DateTime expirationDate , int quantity)// tambien le podemos agregar mas parametros para el padre de esto
+            : base(nombre, price, alcohol,  quantity) // Llamada al constructor de la clase base 
         {
              this.Expiration = expirationDate; //  solo le mandamos la propiedade del hijo
         }
@@ -32,3 +32,4 @@ namespace ProgracionOrientadaObjetos.Business
 // public  puedo acceder desde cualquier proyecto
 // private protected  puedo acceder en los hijos y en el mismo proyecto 
 ///otected internal  puedo acceder en los hijos y en el mismo proyecto y en otros proyectos
+/// Esta clase  es pendiente de terminar

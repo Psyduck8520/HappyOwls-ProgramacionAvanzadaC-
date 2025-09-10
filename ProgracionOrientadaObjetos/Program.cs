@@ -33,6 +33,7 @@ Console.WriteLine(beer.SAlcohol);
 
 var delirium  = new ExpiringBeer("Delirium Tremens", 50, 8.5m, new DateTime(2024, 10, 20), 1000);
 
+Console.WriteLine(delirium.GetCategory());
 Console.WriteLine(delirium.GetInfo());
 Console.WriteLine(delirium.getInfo("esta es una nueva  frase"));
 //dependiendo el cotexto vamos a tenr resultados difirentes, se basa igual al tipo 
