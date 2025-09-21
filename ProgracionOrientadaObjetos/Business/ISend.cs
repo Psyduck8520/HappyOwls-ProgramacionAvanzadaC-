@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProgracionOrientadaObjetos.Business
 {
-    internal interface ISend
+    public interface ISend
     {
+        public void Send(); // metodo sin cuerpo , la ventaja esque podemos   varias categorias en nuestras clases 
     }
 }

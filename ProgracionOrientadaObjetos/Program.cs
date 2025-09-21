@@ -52,3 +52,39 @@ void SendSome(ISend some) {
     some.Send();
     Console.WriteLine("Hago algo mas ");
 }
+
+//LOS GENERICS NOS AYUDA
+
+var elements = new Collection<int>(3); // creamos una coleccion de enteros
+elements.Add(1);
+elements.Add(2);   
+elements.Add(3);
+elements.Add(4); // no se puede por que la coleccion es de 3 elementos
+
+foreach (var item in elements.Get())
+{
+    Console.WriteLine(item);
+}
+
+var names  = new Collection<string>(2); // aki podemos reutilizar el mismo metodo para diferentes cosas.
+names.Add("Juan"); 
+names.Add("Pedro");
+names.Add("Maria"); // no se puede por que la coleccion es de 2 elementos
+foreach (var item in names.Get())
+{
+    Console.WriteLine(item);
+}
+
+//tambien podemos para meter objetos
+
+var beers  = new Collection<Beer>(2);
+beers.Add(delirium);
+beers.Add(cornaBeer);
+
+foreach(var element in beers.Get())
+{
+    Console.WriteLine(element.GetInfo());
+}
+
+
+
