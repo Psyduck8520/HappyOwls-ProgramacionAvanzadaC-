@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProgracionOrientadaObjetos.Business
 {
-    public class Beer : Drink
-    {
+    public class Beer : Drink, ISalable ,ISend // aki implementamos la interfaz, pero me da error por que la interfaz tiene un metodo que no esta implementado
+    { // podemos tener varias clasee clasificadas siginifica que aparte de vendibles es enviable
         private const string  Category = "Cerveza"; // campo constante
         private decimal _alcohol; // soin campos
         public string Name { get; set; } // Propiedades
@@ -63,6 +63,14 @@ namespace ProgracionOrientadaObjetos.Business
         {
             return Category;
         }
+        public decimal GetPrice() {  // implementamos el metodo de la interfaz , des esta manera ya no da error y ademas sabemos que vamos a buscar un precio pero no que es lo que va hacer
+            return decimal.Parse(Price);
+        }
+        public void Send() // implementamos el metodo de la interfaz
+        {
+            Console.WriteLine($" Se envia por correo" +  GetInfo());
+        }
+
 
     }
 }

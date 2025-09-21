@@ -33,10 +33,22 @@ Console.WriteLine(beer.SAlcohol);
 
 var delirium  = new ExpiringBeer("Delirium Tremens", 50, 8.5m, new DateTime(2024, 10, 20), 1000);
 
-Console.WriteLine(delirium.GetCategory());
-Console.WriteLine(delirium.GetInfo());
-Console.WriteLine(delirium.getInfo("esta es una nueva  frase"));
+Drink drinkde =  new Wine(500); // podemos crear un objeto drink a partir de su hijo wine
 //dependiendo el cotexto vamos a tenr resultados difirentes, se basa igual al tipo 
 // de entrada de informacion 
 
 //Sobrecarga de metodos es lo  mismo pero tener distintos parametros con el mismo nombre de la funcion.
+
+Drink  drink1 = new Wine(750); // podemos crear un objeto drink a partir de su hijo wines
+Show(drink1); // llamamos al metodo show y le pasamos el objeto drink1 que es de tipo wine
+
+Drink drink2 = new Beer("Heineken", 30, 5.0m, 600);
+ Show(drink2); // llamamos al metodo show y le pasamos el objeto drink2 que es de tipo beer
+void Show(Drink drink) => Console.WriteLine(drink.GetCategory()); //
+                                                                  //Todos los objetos que sean del tipo drink van a poder usar este metodo getcategory
+
+void SendSome(ISend some) {
+    Console.WriteLine("Enviando...");
+    some.Send();
+    Console.WriteLine("Hago algo mas ");
+}
