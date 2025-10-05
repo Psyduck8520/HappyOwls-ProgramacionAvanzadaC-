@@ -47,4 +47,12 @@ s(beerRepository); // llamamos al metodo Show por medio de la accion
 Console.WriteLine(add(3, 4)); // mostramos el resultado de la suma  podemos ejecutarlo como si fuera un metodo normal  por medio de generics    
 Console.WriteLine(addDouble(3.5, 2.0)); // mostramos el resultado de la multiplicacion 
 Console.WriteLine(concat("Hola", "Mundo")); // mostramos el resultado de la concatenacion
-delegate T     Operation<T>(T element1, T element2 ); // creamos un delegado que recibe dos enteros y devuelve un entero
+//delegate T     Operation<T>(T element1, T element2 ); // creamos un delegado que recibe dos enteros y devuelve un entero
+
+// Para les restricciones en generics podemos usar where y tenemos que entender que int es struct y string es class y podemos restringir
+// los tipos de datos que pueden ser usados en una clase generica o en un metodo gener
+// por ejemplo podemos crear una clase generica que solo acepte tipos de datos que sean clases  
+
+delegate T  Operation<T>(T element1, T element2) where T : struct; // creamos un delegado que recibe dos enteros y devuelve un entero
+// donde T es un struct , es decir un tipo de dato por valor , tambien podemos hacer  una para clases   
+delegate T OperationClass<T>(T element1, T element2) where T : class; // creamos un delegado que recibe dos enteros y devuelve un entero
