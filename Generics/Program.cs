@@ -1,12 +1,11 @@
 ﻿//Son un mecanismos que nos permite reutilizar codigo
 using Generics;
 using System.Dynamic;
-
 var box = new Box<int>(12); // creamos una caja de tipo string, como mi clase es generica puedo crear una caja de cualquier tipo
 var box2 = new Box<string>("Hola"); // creamos una caja de tipo string, mirate el constructor y lo entenderas
 
-Console.WriteLine(box.GetContent()); // mostramos el contenido de la caja
-Console.WriteLine(box2.GetContent()); // mostramos el contenido de la caja 
+//Console.WriteLine(box.GetContent()); // mostramos el contenido de la caja
+//Console.WriteLine(box2.GetContent()); // mostramos el contenido de la caja 
 
 //tambien pueden ser usados en intefaces y metodos
 
@@ -26,6 +25,30 @@ void Show<T>(IRepository<T> repository) // creamos un metodo generico que recibe
     }
 }
 
+//aqui vamos a crear otra función pra restringir otro generic para que sea solo de la clase drink
+
+void ShowQuantity<T>(T drink) where T : Drink // creamos un metodo generico que recibe un repositorio de cualquier tipo
+{
+    Console.WriteLine(drink.Quantity);// mostramos cada cerveza.  sabe que existe 
+
+}
+
+var drink  = new Drink(550); // creamos una bebida
+ShowQuantity(drink); // llamamos al metodo show y le pasamos el repositorio de cervezas, aki le pasamos el tipo de dato
+
+var drink2 = new Beer( "Corona",330); // creamos una bebida
+
+ShowQuantity(drink2); // llamamos al metodo show y le pasamos el repositorio de cervezas, aki le pasamos el tipo de dato
+
+// ahora vamos a crear otra funcion que reciba un generic que implemente una interfaz, porque dentro de la interfaz ya se tiene este
+void showInfo<T>(T element   ) where T :IInfo // creamos un metodo generico que recibe un repositorio de cualquier tipo
+// metodo getinfo
+ {
+     Console.WriteLine(element.GetInfo());// mostramos cada cerveza.  sabe que existe 
+} // es util cuando queremos tener tipado 
+ 
+showInfo(drink2); // llamamos al metodo show y le pasamos el repositorio de cervezas, aki le pasamos el tipo de dato
+
 // las interfaces genericas son muy utiles para crear repositorios de datos , por que podemos hacer 
 //que funcionen con diferentes tipos de datosl eso nos da una ventaja muy grande o una base de datos
 // por ejemplo podemos tener un repositorio de cervezas , otro de vinos , otro de refrescos etc
@@ -44,15 +67,18 @@ Action<IRepository<string>>  s = Show; // creamos una variable de tipo accion qu
 
 s(beerRepository); // llamamos al metodo Show por medio de la accion
 
-Console.WriteLine(add(3, 4)); // mostramos el resultado de la suma  podemos ejecutarlo como si fuera un metodo normal  por medio de generics    
-Console.WriteLine(addDouble(3.5, 2.0)); // mostramos el resultado de la multiplicacion 
-Console.WriteLine(concat("Hola", "Mundo")); // mostramos el resultado de la concatenacion
-//delegate T     Operation<T>(T element1, T element2 ); // creamos un delegado que recibe dos enteros y devuelve un entero
+//Console.WriteLine(add(3, 4)); // mostramos el resultado de la suma  podemos ejecutarlo como si fuera un metodo normal  por medio de generics    
+//Console.WriteLine(addDouble(3.5, 2.0)); // mostramos el resultado de la multiplicacion 
+//Console.WriteLine(concat("Hola", "Mundo")); // mostramos el resultado de la concatenacion
+delegate T     Operation<T>(T element1, T element2 ); // creamos un delegado que recibe dos enteros y devuelve un entero
 
 // Para les restricciones en generics podemos usar where y tenemos que entender que int es struct y string es class y podemos restringir
 // los tipos de datos que pueden ser usados en una clase generica o en un metodo gener
 // por ejemplo podemos crear una clase generica que solo acepte tipos de datos que sean clases  
 
-delegate T  Operation<T>(T element1, T element2) where T : struct; // creamos un delegado que recibe dos enteros y devuelve un entero
+delegate T  OperationStruct<T>(T element1, T element2) where T : struct; // creamos un delegado que recibe dos enteros y devuelve un entero
 // donde T es un struct , es decir un tipo de dato por valor , tambien podemos hacer  una para clases   
 delegate T OperationClass<T>(T element1, T element2) where T : class; // creamos un delegado que recibe dos enteros y devuelve un entero
+
+// Tambien los generics podemos restrigir por una clase en especifico  o tambien por interfaces.
+
