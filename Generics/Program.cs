@@ -85,6 +85,15 @@ while ( pools.Count > 0 )
     Console.WriteLine(number.Number); // mostramos el objeto
 }
 
+
+
+void ShowInfoQuantity<T>(T drink) where T : Drink, IInfo // Podemos tener multiples restricciones y son las clases primero y las interfaces despues
+{
+    Console.WriteLine(drink.Quantity);// mostramos cada cerveza.  sabe que existe 
+}
+
+ShowInfoQuantity(drink2); // llamamos al metodo show y le pasamos el repositorio de cervezas, aki le pasamos el tipo de dato, ademas que que implemente la interfaz, y tambie es drink
+
 //Console.WriteLine(add(3, 4)); // mostramos el resultado de la suma  podemos ejecutarlo como si fuera un metodo normal  por medio de generics    
 //Console.WriteLine(addDouble(3.5, 2.0)); // mostramos el resultado de la multiplicacion 
 //Console.WriteLine(concat("Hola", "Mundo")); // mostramos el resultado de la concatenacion
