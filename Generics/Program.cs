@@ -67,6 +67,24 @@ Action<IRepository<string>>  s = Show; // creamos una variable de tipo accion qu
 
 s(beerRepository); // llamamos al metodo Show por medio de la accion
 
+
+var pool = new ObjectPool<Clock>(4); // creamos un pool de 5 objetos de tipo Clock
+
+while( pool.Count > 0 )
+{
+    var clock = pool.Get(); // obtenemos un objeto del pool
+    Console.WriteLine(clock.date); // mostramos el objeto
+}
+
+var  pools = new ObjectPool<Randoms>(3); // creamos un pool de 5 objetos de tipo Clock
+
+while ( pools.Count > 0 )
+{
+    var number = pools.Get(); // obtenemos un objeto del pool
+    Console.WriteLine("Nuevo Pools");
+    Console.WriteLine(number.Number); // mostramos el objeto
+}
+
 //Console.WriteLine(add(3, 4)); // mostramos el resultado de la suma  podemos ejecutarlo como si fuera un metodo normal  por medio de generics    
 //Console.WriteLine(addDouble(3.5, 2.0)); // mostramos el resultado de la multiplicacion 
 //Console.WriteLine(concat("Hola", "Mundo")); // mostramos el resultado de la concatenacion
@@ -80,5 +98,9 @@ delegate T  OperationStruct<T>(T element1, T element2) where T : struct; // crea
 // donde T es un struct , es decir un tipo de dato por valor , tambien podemos hacer  una para clases   
 delegate T OperationClass<T>(T element1, T element2) where T : class; // creamos un delegado que recibe dos enteros y devuelve un entero
 
+
 // Tambien los generics podemos restrigir por una clase en especifico  o tambien por interfaces.
 
+// restricciones en generics en contructores  hace que se restrinjan que tenga una clase sin parametros y sirve
+// fabricas de objetos y pools  un pool es una coleccion de objetos que se pueden reutilizar, que nunca se sobre pase el limite 
+// creamos un pool de 5 objetos de tipo Drink
