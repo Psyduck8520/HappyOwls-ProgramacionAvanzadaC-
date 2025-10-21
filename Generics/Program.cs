@@ -86,10 +86,13 @@ while ( pools.Count > 0 )
 }
 
 IDrinkCreator<Drink> beerCreator = new IPABeerCreator(); // creamos un creador de cervezas IPA, ahora si se puede por que pusimo out en la interfaz
-var drink3 = beerCreator.CreateDrink(500); // creamos una cerveza de 500ml, a pesar que retona drink es una cerveza,
+var drink3 = beerCreator.CreateDrink(500); // creamos una cerveza de 500ml, a pesar que retona drink es una cerveza, no podemos  acceder a la informacion
+//en resumen la covarianza podemos permitir el comportamiento desde la clase base, si pones out ponermos para trabajar en clases baje siempre  trabaja con retornos 
+ // salimos del programa
 
-return; // salimos del programa
-
+Ishow<Beer> beerShow = new DrinkShow(); // creamos un objeto de tipo DrinkShow que implementa la interfaz Ishow<Drink>
+var deliriumBeer = new Beer("Delirium Tremens", 330); // creamos una cerveza, la diferencia entre coravarianza y contravarianza es que en la covarianza podemos usar una clase derivada en lugar de la clase base
+// en la es un tipo que se retorna en la contravarianza es un tipo que se pasa como parametro y en la covarianza es un tipo que se retorna
 void ShowInfoQuantity<T>(T drink) where T : Drink, IInfo // Podemos tener multiples restricciones y son las clases primero y las interfaces despues
 {
     Console.WriteLine(drink.Quantity);// mostramos cada cerveza.  sabe que existe 
