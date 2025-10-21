@@ -85,7 +85,10 @@ while ( pools.Count > 0 )
     Console.WriteLine(number.Number); // mostramos el objeto
 }
 
+IDrinkCreator<Drink> beerCreator = new IPABeerCreator(); // creamos un creador de cervezas IPA, ahora si se puede por que pusimo out en la interfaz
+var drink3 = beerCreator.CreateDrink(500); // creamos una cerveza de 500ml, a pesar que retona drink es una cerveza,
 
+return; // salimos del programa
 
 void ShowInfoQuantity<T>(T drink) where T : Drink, IInfo // Podemos tener multiples restricciones y son las clases primero y las interfaces despues
 {
