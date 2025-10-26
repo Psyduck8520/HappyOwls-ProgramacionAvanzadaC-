@@ -27,6 +27,8 @@ string name = "Edison";
 List<string> names = new List<string>() {"Ana","Juan","Edi"};
 Console.WriteLine(name.Exists(names)); //false 
 
+Console.WriteLine(name.IsOn(names));  // aki si le podemos ejecutar por que es una clase 
+//num.IsOn aki no se va poder ejecutar  por que es una estruc , a diferencia de string  que es un objeto o una lista  /
 
 public static class  IntOperation
 {
@@ -51,6 +53,18 @@ public static class ListExtensions {
         {
             if (item.Equals(element))
                 return true;
+        }
+        return false;
+    }
+
+    public static bool IsOn<T>(this T element, List<T> list) where T : class
+    {
+        foreach ( T item in list)
+        {
+            if (item.Equals(element))
+            {
+                return true;
+            }
         }
         return false;
     }
