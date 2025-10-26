@@ -15,12 +15,17 @@ Console.WriteLine(number2); //20
 // Ahora podemos llamar a la extension aki
 
 var sale = new Sale(500); //creamos una venta
-Console.WriteLine(sale.GetInfo()); //llamamos al metodo de extension que hemos creado, aki podemos hacer 
+//Console.WriteLine(sale.GetInfo()); //llamamos al metodo de extension que hemos creado, aki podemos hacer 
+int num = 20; 
+Console.WriteLine(num.Mul(5)); //100 aki le etamos pasando un parametros 
+
 
 public static class  IntOperation
 {
      public static int X2(this int number)=> number * 2; //el this indica que es un metodo de extension y el tipo que extiende
     // es un metodo estatico que no pertenece a la clases si no que pertenece al tipo que extiende 
+
+     public static int  Mul(this int number, int multiplier) => number * multiplier; //podemos agregar mas parametros
 }
 
 
