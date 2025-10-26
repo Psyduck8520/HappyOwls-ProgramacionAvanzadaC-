@@ -2,6 +2,7 @@
 //para agregar tenemos que hacer metodos estaticos en clases estaticas, se van a comportar como metodods de la instancia
 
 using ExtensionMethods;
+using System.Globalization;
 
 int number = 10; // los estruct seon tipos por valor
 number.CompareTo(5); //metodo de la instancia
@@ -17,7 +18,14 @@ Console.WriteLine(number2); //20
 var sale = new Sale(500); //creamos una venta
 //Console.WriteLine(sale.GetInfo()); //llamamos al metodo de extension que hemos creado, aki podemos hacer 
 int num = 20; 
-Console.WriteLine(num.Mul(5)); //100 aki le etamos pasando un parametros 
+//Console.WriteLine(num.Mul(5)); //100 aki le etamos pasando un parametros 
+
+List<int> numbers = new List<int>() {15,20,30,4,5};
+Console.WriteLine( num.Exists(numbers)); //true
+
+string name = "Edison";
+List<string> names = new List<string>() {"Ana","Juan","Edi"};
+Console.WriteLine(name.Exists(names)); //false 
 
 
 public static class  IntOperation
@@ -36,5 +44,15 @@ public static class SaleExtensions
         => $" El monto de la venta es: {sale.Amount}";
 } // esto funciona como un dll que extendie el fucionamiento de la clase Sale sin modificarla.
 
-
+public static class ListExtensions {
+    public static bool Exists<T>(this T element, List<T> list) //podemos hacer metodos genericos nos permita una gran flexibilida d
+    {
+        foreach (var item in list)
+        {
+            if (item.Equals(element))
+                return true;
+        }
+        return false;
+    }
+}
 
