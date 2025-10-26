@@ -34,8 +34,11 @@ var beer = new beer() { Quantity = 5.5m};
 var wine = new Wine() { Quantity = 3.2m}; // ambas clases implementan la interfaz Idrink
 
 Console.WriteLine(beer.GetDescripcion()); //llamamos al metodo de extension de la interfaz
-Console.WriteLine(wine.GetDescripcion());
+Console.WriteLine(wine.GetDescripcion()); // esta es una gran  ventaja por que todas las clases que implementen la interfaz tendran ese metodo disponible
 
+beer.Setbrand("Fuller").SetName("Corona").SetQuantity(6.0m); //podemos hacer encadenamiento de metodos por que retornamos el mismo objeto
+
+Console.WriteLine( "nombre " + beer.name  + beer.GetDescripcion());
 
 public static class  IntOperation
 {
@@ -87,13 +90,15 @@ public static class DrinkExtensions
 {
     public static string GetDescripcion(this Idrink drink)
     {
-        return $" La cantidad de bebida es: {drink.Quantity} litros"; // aki ya lo extendemos por la interfaz 
+        return $" La cantidad de bebida  es:  {drink.Quantity} litros"; // aki ya lo extendemos por la interfaz 
     }
 }
 
 public class beer: Idrink
 {
     public decimal Quantity { get; set; }
+    public string name { get; set; }
+    public string Brand { get; set; }
 }
 
 public class Wine : Idrink
@@ -101,4 +106,21 @@ public class Wine : Idrink
     public decimal Quantity { get; set; }
 }
 
-
+public static class BeerExxtensions
+{
+    public static beer SetQuantity(this beer beer, decimal quantity)
+    {
+        beer.Quantity = quantity;
+        return beer; //podemos retornar el mismo objeto para hacer encadenamiento de metodos
+    }
+    public static beer SetName(this beer beer, string name)
+    {
+        beer.name = name;
+        return beer; //podemos retornar el mismo objeto para hacer encadenamiento de metodos
+    }
+        public static beer Setbrand(this beer beer, string brand)
+    {
+        beer.Brand = brand.ToUpper() ;
+        return beer; //podemos retornar el mismo objeto para hacer encadenamiento de metodos
+    }
+}
