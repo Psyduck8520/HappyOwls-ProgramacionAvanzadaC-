@@ -30,6 +30,13 @@ Console.WriteLine(name.Exists(names)); //false
 Console.WriteLine(name.IsOn(names));  // aki si le podemos ejecutar por que es una clase 
 //num.IsOn aki no se va poder ejecutar  por que es una estruc , a diferencia de string  que es un objeto o una lista  /
 
+var beer = new beer() { Quantity = 5.5m}; 
+var wine = new Wine() { Quantity = 3.2m}; // ambas clases implementan la interfaz Idrink
+
+Console.WriteLine(beer.GetDescripcion()); //llamamos al metodo de extension de la interfaz
+Console.WriteLine(wine.GetDescripcion());
+
+
 public static class  IntOperation
 {
      public static int X2(this int number)=> number * 2; //el this indica que es un metodo de extension y el tipo que extiende
@@ -49,9 +56,9 @@ public static class SaleExtensions
 public static class ListExtensions {
     public static bool Exists<T>(this T element, List<T> list) //podemos hacer metodos genericos nos permita una gran flexibilida d
     {
-        foreach (var item in list)
-        {
-            if (item.Equals(element))
+        foreach ( T item in list)
+        {   if ( item !=null)
+            if ( item.Equals(element))
                 return true;
         }
         return false;
@@ -69,4 +76,29 @@ public static class ListExtensions {
         return false;
     }
 }
+
+public interface Idrink { 
+    public decimal Quantity { get; set; }
+}
+
+// Puedo crear una extension method para la interfaz y todas las clases que la implementen tendran ese metodo, esto es una genialidad 
+
+public static class DrinkExtensions
+{
+    public static string GetDescripcion(this Idrink drink)
+    {
+        return $" La cantidad de bebida es: {drink.Quantity} litros"; // aki ya lo extendemos por la interfaz 
+    }
+}
+
+public class beer: Idrink
+{
+    public decimal Quantity { get; set; }
+}
+
+public class Wine : Idrink
+{
+    public decimal Quantity { get; set; }
+}
+
 
