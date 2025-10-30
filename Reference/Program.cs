@@ -59,3 +59,6 @@ public class  Number
 {
      public decimal NumberValue { get; set; } 
 }
+
+// inmutabilidad  es  cuando no quieres  modificar los elementos ,  es inmutable 
+// se trabaja  con clones y copias 
