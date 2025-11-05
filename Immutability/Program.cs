@@ -17,6 +17,12 @@ var brand = new Brand("Corona", beers);
 // poner el atribu sin el readonly si no solo como la lista nomal , quitarle el set y ahi solo se puede modificar en el constructor, pero si puedo agregar
 //  mas valores.
 
+var brand2 = brand.With("Erdinger"); //  hicimos para  cambiar el nombre  por que el atnerior no funciona por que es inmutable, 
+// osea  se realizo una copia  de brand  pero con el nombre cambiado
+
+var  brand3 = brand.With(beers : new List<string> { "Erdinger", "Weissbier" }); // aki estamos creando una nueva instancia de la clase Brand con las cervezas modificadas
+
+return; 
 public class Brand
 {   
    
@@ -24,7 +30,20 @@ public class Brand
     public IReadOnlyList<string> Beers { get;} // con init solo se puede asignar el valor en el momento de la creacion del objeto
 
     public Brand(string name, List<String> beers)
-        => Name = name;
+    {
+        Name = name;
+        Beers = beers;
+    }
+        
+     
+
+    //El patron with  permite crear una copia de un objeto inmutable con algunas propiedades modificadas
+    
+    public Brand With( string? name = null, List<string>  beers  = null )
+    {
+         return new Brand(name ??  this.Name , beers  ??  this.Beers.ToList() ); // aki estamos creando una nueva instancia de la clase Brand con los valores modificados
+    }
+
 } 
 
 public class Calculator
