@@ -11,7 +11,7 @@ namespace ProgracionOrientadaObjetos.Business
         private decimal _alcohol; // campo  con guion bajo si  es privado por convension y las propiedades son mayusculas por convension, el encapsulamiento es una de las caracteristicas de la programacion orientada a objetos, que nos permite ocultar los detalles de implementacion de una clase y exponer solo lo necesario a traves de propiedades y metodos publicos.
                                   //si es privado solo se accede dentro de la clase, si es publico se puede acceder desde fuera de la clase, si es protegido se puede acceder desde la clase y sus clases derivadas, si es interno se puede acceder desde el mismo ensamblado, si es protegido interno se puede acceder desde el mismo ensamblado y sus clases derivadas.
         public string Name { get; set; } // Las propiedades de la clase Beer, con sus respectivos getters y setters  de manera publica podemos acceder 
-        public decimal Price { get; set; }
+        protected decimal Price { get; set; }
 
         public decimal Alcohol // propiedad con un campo privado, con un getter y setter personalizado, el encapsulamiento nos permite controlar el acceso a los datos de una clase y protegerlos de modificaciones no deseadas.
         {
@@ -51,3 +51,7 @@ namespace ProgracionOrientadaObjetos.Business
 
     }
 }
+
+
+//Nota  si es private solo puedo acceder en sus clases 
+// si es protected si mis hijos pueden acceder a ese campo o propiedad, como en las clases que me hereden

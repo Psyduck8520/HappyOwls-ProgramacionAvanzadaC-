@@ -16,9 +16,11 @@ namespace ProgracionOrientadaObjetos.Business
                 base(name, price, alcohol) //Estoy enviando al padre
             {
 
-                expirationDate = expirationDate;
+                ExpirationDate = expirationDate;
+                var p = Price; // como es protected puedo acceder a el desde la clase hija, pero no puedo acceder a el desde fuera de la clase, por ejemplo desde el programa principal.
 
-            }
+
+        }
         }
 
 }
