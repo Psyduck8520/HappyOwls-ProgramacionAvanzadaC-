@@ -1,90 +1,37 @@
-﻿using ProgracionOrientadaObjetos.Business;
-using System.Diagnostics;
-/*Beer beer = new Beer()
+﻿
+using System.Runtime.CompilerServices;
+
+Beer endingerBeer =  new Beer( "Endinger" ,3 );
+
+//Tambien podemos crear nuestros objetos con la palabra var 
+//var coronaBeer = new Beer();  aki me va dar error por que el costructor requiere que tenga esos datos 
+//coronaBeer.Name = "Corona";
+//coronaBeer.Price = 4m;
+
+var coronaBeer = new Beer("Corona", 4m); // aqui si me va a funcionar por que el constructor requiere esos datos
+
+
+Console.WriteLine($"La cerveza {endingerBeer.Name} cuesta {endingerBeer.Price}");
+Console.WriteLine($"La cerveza {coronaBeer.Name} cuesta {coronaBeer.Price}");
+Console.WriteLine(endingerBeer.GetBeerInfo());// podemos hacer models que puede ser reutilizados y podemos usar el paradigma orientados objetos.
+
+
+public class   Beer 
 {
-    Name = "Corona",
-    Price = "20"
-};// creammos un objeto de tipo beer 
+     public string Name { get; set; } // Las propiedades de la clase Beer, con sus respectivos getters y setters  de manera publica podemos acceder 
+    public decimal Price { get; set; }
+    //constructor 
 
-// otra manera de asignar es  agregando valores a cada uno si son publicos 
- /*var  coronaBeer = new Beer(); 
- coronaBeer.Name = "Corona";
-coronaBeer.Price = "20";*
+    public Beer(string  name, decimal price) // constructor vacio, mismo nombre de la clase, no tiene tipo de retorno, y recibe parametros para inicializar las propiedades de la clase
+    {
+       this.Name = name;
+       this.Price = price;
+    }
 
-Console.WriteLine($"La cerveza es {beer.Name} y su precio es {beer.Price} pesos");
-Console.WriteLine($"La cerveza es {coronaBeer.Name} y su precio es {coronaBeer.Price} pesos");
-
-Console.WriteLine(beer.GetInfo());
-*/
-// podemos tener varis contructores de deistintos tipos 
-// tambine un cosntructor tiene un cuerpo vacio y lo podemos cargar cuando se crean
-// tiene que tener el mismo nombre de la clase 
-
-Beer beer = new Beer("Corona", 20, -24, 1000);  // aki tenemos que cambiar por que obviamente cambioel constructor 
-var cornaBeer = new Beer("Corona", 20, 3023, 100); // aki tambien cambiamos por que  cambio el contructor
-
-Drink drink  = new Beer("Pepsi", 15, 0.0m, 500); // Podemos crear un objeto drink a partir de su hijo pero no directamente de drink por que es abstracta ,
-                                                 // pero solo tendriamos los metodos y propiedades de drink  osea no se puede usar los metodos de  beer 
-
-Console.WriteLine(beer.GetInfo());
-// de testa manera tenemos la certeza de que la cerveza siempre va a tener un nombre y un precio 
-
-Console.WriteLine(beer.SAlcohol);  
-
-var delirium  = new ExpiringBeer("Delirium Tremens", 50, 8.5m, new DateTime(2024, 10, 20), 1000);
-
-Drink drinkde =  new Wine(500); // podemos crear un objeto drink a partir de su hijo wine
-//dependiendo el cotexto vamos a tenr resultados difirentes, se basa igual al tipo 
-// de entrada de informacion 
-
-//Sobrecarga de metodos es lo  mismo pero tener distintos parametros con el mismo nombre de la funcion.
-
-Drink  drink1 = new Wine(750); // podemos crear un objeto drink a partir de su hijo wines
-Show(drink1); // llamamos al metodo show y le pasamos el objeto drink1 que es de tipo wine
-
-Drink drink2 = new Beer("Heineken", 30, 5.0m, 600);
- Show(drink2); // llamamos al metodo show y le pasamos el objeto drink2 que es de tipo beer
-void Show(Drink drink) => Console.WriteLine(drink.GetCategory()); //
-                                                                  //Todos los objetos que sean del tipo drink van a poder usar este metodo getcategory
-
-void SendSome(ISend some) {
-    Console.WriteLine("Enviando...");
-    some.Send();
-    Console.WriteLine("Hago algo mas ");
+    //  Comoportamiento ,  tiene un metodo
+    public string  GetBeerInfo()
+    {
+        return $"La cerveza {Name} cuesta {Price}"; // metodo que contiene get info
+    }
+    
 }
-
-//LOS GENERICS NOS AYUDA
-
-var elements = new Collection<int>(3); // creamos una coleccion de enteros
-elements.Add(1);
-elements.Add(2);   
-elements.Add(3);
-elements.Add(4); // no se puede por que la coleccion es de 3 elementos
-
-foreach (var item in elements.Get())
-{
-    Console.WriteLine(item);
-}
-
-var names  = new Collection<string>(2); // aki podemos reutilizar el mismo metodo para diferentes cosas.
-names.Add("Juan"); 
-names.Add("Pedro");
-names.Add("Maria"); // no se puede por que la coleccion es de 2 elementos
-foreach (var item in names.Get())
-{
-    Console.WriteLine(item);
-}
-
-//tambien podemos para meter objetos
-
-var beers  = new Collection<Beer>(2);
-beers.Add(delirium);
-beers.Add(cornaBeer);
-
-foreach(var element in beers.Get())
-{
-    Console.WriteLine(element.GetInfo());
-}
-
-
-
