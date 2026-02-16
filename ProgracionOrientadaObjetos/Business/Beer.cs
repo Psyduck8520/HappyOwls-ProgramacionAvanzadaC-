@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace ProgracionOrientadaObjetos.Business
 {
-    public class Beer: Drink
+    public class Beer: Drink , ISalable,ISend
     {
         private  const  string Category = "Cerveza"; // constante, no se puede modificar su valor, es una caracteristica de la programacion orientada a objetos que nos permite definir valores constantes que no pueden ser modificados, esto es una forma de encapsulamiento, ya que estamos ocultando el valor de la constante y exponiendo solo lo necesario a traves de la propiedad GetCategory.
         private decimal _alcohol; // campo  con guion bajo si  es privado por convension y las propiedades son mayusculas por convension, el encapsulamiento es una de las caracteristicas de la programacion orientada a objetos, que nos permite ocultar los detalles de implementacion de una clase y exponer solo lo necesario a traves de propiedades y metodos publicos.
                                   //si es privado solo se accede dentro de la clase, si es publico se puede acceder desde fuera de la clase, si es protegido se puede acceder desde la clase y sus clases derivadas, si es interno se puede acceder desde el mismo ensamblado, si es protegido interno se puede acceder desde el mismo ensamblado y sus clases derivadas.
         public string Name { get; set; } // Las propiedades de la clase Beer, con sus respectivos getters y setters  de manera publica podemos acceder 
         public decimal Price { get; set; }
+
+        public static int QuantityObjets;
 
         public decimal Alcohol // propiedad con un campo privado, con un getter y setter personalizado, el encapsulamiento nos permite controlar el acceso a los datos de una clase y protegerlos de modificaciones no deseadas.
         {
@@ -43,6 +45,7 @@ namespace ProgracionOrientadaObjetos.Business
             this.Name = name;
             this.Price = price;
             Alcohol = alcohol;
+            QuantityObjets++; // aqui estamos incrementando el contador de objetos de la clase Beer cada vez que se crea un nuevo objeto de la clase Beer, esto es una caracteristica de la programacion orientada a objetos que nos permite controlar el acceso a los datos de una clase y protegerlos de modificaciones no deseadas.
         }
 
         //  Comoportamiento ,  tiene un metodo
@@ -64,6 +67,16 @@ namespace ProgracionOrientadaObjetos.Business
         public override string GetCategory() // tenemos que tener  override para poder sobre escribir este metodo 
         {
             return   Category; // aqui estamos devolviendo el valor de la constante Category, esto es una forma de encapsulamiento, ya que estamos ocultando el valor de la constante y exponiendo solo lo necesario a traves de la propiedad GetCategory.
+        }
+
+        public decimal GetPrice()
+        {
+            return  Price; // aqui estamos devolviendo el valor de la propiedad Price, esto es una forma de encapsulamiento, ya que estamos ocultando el valor de la propiedad y exponiendo solo lo necesario a traves del metodo GetPrice, esto es una caracteristica de la programacion orientada a objetos que nos permite controlar el acceso a los datos de una clase y protegerlos de modificaciones no deseadas.
+        }
+
+        public void Send()
+        {
+           Console.WriteLine("Se envia por correo" + GetBeerInfo()); // aqui estamos implementando el metodo Send de la interfaz ISend, esto es una caracteristica de la programacion orientada a objetos que nos permite definir comportamientos comunes a través de interfaces, y luego implementar esos comportamientos en las clases que implementan la interfaz, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
         }
     }
 }
