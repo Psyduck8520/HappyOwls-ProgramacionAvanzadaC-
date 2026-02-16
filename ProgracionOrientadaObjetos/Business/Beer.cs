@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProgracionOrientadaObjetos.Business
 {
-    public class Beer
+    public class Beer: Drink
     {
+        private  const  string Category = "Cerveza"; // constante, no se puede modificar su valor, es una caracteristica de la programacion orientada a objetos que nos permite definir valores constantes que no pueden ser modificados, esto es una forma de encapsulamiento, ya que estamos ocultando el valor de la constante y exponiendo solo lo necesario a traves de la propiedad GetCategory.
         private decimal _alcohol; // campo  con guion bajo si  es privado por convension y las propiedades son mayusculas por convension, el encapsulamiento es una de las caracteristicas de la programacion orientada a objetos, que nos permite ocultar los detalles de implementacion de una clase y exponer solo lo necesario a traves de propiedades y metodos publicos.
                                   //si es privado solo se accede dentro de la clase, si es publico se puede acceder desde fuera de la clase, si es protegido se puede acceder desde la clase y sus clases derivadas, si es interno se puede acceder desde el mismo ensamblado, si es protegido interno se puede acceder desde el mismo ensamblado y sus clases derivadas.
         public string Name { get; set; } // Las propiedades de la clase Beer, con sus respectivos getters y setters  de manera publica podemos acceder 
@@ -36,7 +37,8 @@ namespace ProgracionOrientadaObjetos.Business
 
         //constructor ss
 
-        public Beer(string name, decimal price, decimal alcohol) // constructor vacio, mismo nombre de la clase, no tiene tipo de retorno, y recibe parametros para inicializar las propiedades de la clase
+        public Beer(string name, decimal price, decimal alcohol, int quantity) // constructor vacio, mismo nombre de la clase, no tiene tipo de retorno, y recibe parametros para inicializar las propiedades de la clase
+            :base(quantity) // aqui estamos llamando al constructor de la clase base Drink para inicializar la propiedad Quantity, esto es una caracteristica de la programacion orientada a objetos que nos permite organizar el codigo y evitar la duplicacion de codigo.
         {
             this.Name = name;
             this.Price = price;
@@ -57,6 +59,11 @@ namespace ProgracionOrientadaObjetos.Business
         public string GetBeerInnfo(int number) //  mandamos un numero 
         { 
             return number + ".-" + GetBeerInfo();
+        }
+
+        public override string GetCategory() // tenemos que tener  override para poder sobre escribir este metodo 
+        {
+            return   Category; // aqui estamos devolviendo el valor de la constante Category, esto es una forma de encapsulamiento, ya que estamos ocultando el valor de la constante y exponiendo solo lo necesario a traves de la propiedad GetCategory.
         }
     }
 }

@@ -13,8 +13,8 @@ namespace ProgracionOrientadaObjetos.Business
             //Tenemos que complir con el constructor de la clase base, por lo tanto tenemos que llamar al constructor de la clase base con la palabra base y pasarle los parametros necesarios para inicializar las propiedades de la clase base.
             public DateTime ExpirationDate { get; set; } // indica   cuando  va caducar 
 
-            public ExpiringBeer(string name, decimal price, decimal alcohol, DateTime expirationDate) :
-                base(name, price, alcohol) //Estoy enviando al padre
+            public ExpiringBeer(string name, decimal price, decimal alcohol, DateTime expirationDate ,int quantity) :
+                base(name, price, alcohol, quantity) //Estoy enviando al padre
             {
 
                 ExpirationDate = expirationDate;
@@ -24,7 +24,7 @@ namespace ProgracionOrientadaObjetos.Business
         public override string GetBeerInfo() // estoy haciendo una sobre escritura, tenemos que poner un override para indicar que estamos sobre escribiendo un metodo de la clase base, el metodo debe tener la misma firma que el metodo de la clase base, es decir, el mismo nombre y los mismos parametros, en este caso el metodo GetBeerInfo no recibe parametros, esto es una caracteristica de la programacion orientada a objetos que nos permite modificar el comportamiento de un metodo heredado de la clase base, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
         {
             return  "Cerveza con caducidad " + Name + " cuesta " + Price + " , el alchol es " + Alcohol + " y caduca el " + ExpirationDate.ToShortDateString(); // aqui estamos modificando el comportamiento del metodo GetBeerInfo para que nos muestre la informacion de la cerveza con caducidad, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
-        }
+        }//ded
 
 
     }
