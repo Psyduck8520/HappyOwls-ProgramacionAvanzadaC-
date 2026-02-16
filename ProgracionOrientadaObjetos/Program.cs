@@ -35,3 +35,19 @@ drink.GetDrinkInfo(); // aqui estamos accediendo al metodo GetDrinkInfo que es h
 // drink solo  se limita a los metodos de la clase abstracta .
 
 Console.WriteLine(delirium.GetCategory()); // aqui estamos accediendo al metodo GetDrinkInfo que es heredado de la clase Drink, por lo tanto podemos usarlo en la clase Beer, esto es una caracteristica de la programacion orientada a objetos que nos permite reutilizar codigo y evitar la duplicacion de codigo.
+
+Drink bebida = new Wine(500); // aqui estamos creando un objeto de la clase Wine que hereda de la clase Drink, por lo tanto tiene todas las propiedades y metodos de la clase Drink, ademas de la propiedad Category que es propia de la clase Wine.
+
+Show(bebida); // aqui estamos llamando al metodo Show y le estamos pasando el objeto bebida que es de tipo Drink, esto es una caracteristica de la programacion orientada a objetos que nos permite organizar el codigo y evitar la duplicacion de codigo, ya que podemos usar este metodo para mostrar la informacion de cualquier bebida que herede de la clase Drink, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
+
+Drink corona  = new Beer("Corona", 4m, -2,1); // aqui estamos creando un objeto de la clase Beer que hereda de la clase Drink, por lo tanto tiene todas las propiedades y metodos de la clase Drink, ademas de las propiedades y metodos propios de la clase Beer.
+
+Show(corona); // aqui estamos llamando al metodo Show y le estamos pasando el objeto corona que es de tipo Drink, esto es una caracteristica de la programacion orientada a objetos que nos permite organizar el codigo y evitar la duplicacion de codigo, ya que podemos usar este metodo para mostrar la informacion de cualquier bebida que herede de la clase Drink, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
+
+Show(endingerBeer);  // tambien me permite mandar un objeto hijo  de la clase Drink, ya que la clase Beer hereda de la clase Drink, esto es una caracteristica de la programacion orientada a objetos que nos permite organizar el codigo y evitar la duplicacion de codigo, ya que podemos usar este metodo para mostrar la informacion de cualquier bebida que herede de la clase Drink, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
+void Show ( Drink drink ) // aqui estamos creando un metodo que recibe un objeto de tipo Drink, esto es una caracteristica de la programacion orientada a objetos que nos permite organizar el codigo y evitar la duplicacion de codigo, ya que podemos usar este metodo para mostrar la informacion de cualquier bebida que herede de la clase Drink, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
+{
+    Console.WriteLine(drink.GetCategory()); // aqui estamos accediendo al metodo GetDrinkInfo que es heredado de la clase Drink, por lo tanto podemos usarlo en cualquier clase que herede de la clase Drink, esto es una caracteristica de la programacion orientada a objetos que nos permite reutilizar codigo y evitar la duplicacion de codigo.
+}
+
+
