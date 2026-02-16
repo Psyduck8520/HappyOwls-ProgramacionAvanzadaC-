@@ -12,6 +12,8 @@ Beer endingerBeer =  new Beer( "Endinger" ,3, 2 );
 var coronaBeer = new Beer("Corona", 4m, -2); // aqui si me va a funcionar por que el constructor requiere esos datos
 
 
+
+
 //Console.WriteLine($"La cerveza {endingerBeer.Name} cuesta {endingerBeer.Price} su continenido de alcohol es {endingerBeer.Alcohol}");
 //Console.WriteLine($"La cerveza {coronaBeer.Name} cuesta {coronaBeer.Price} su continenido de alcohol es {coronaBeer.Alcohol}");
 //Console.WriteLine(endingerBeer.GetBeerInfo());// podemos hacer models que puede ser reutilizados y podemos usar el paradigma orientados objetos.
@@ -20,4 +22,8 @@ var coronaBeer = new Beer("Corona", 4m, -2); // aqui si me va a funcionar por qu
  
  var  delirium  = new  ExpiringBeer("Delirium", 5m, 8, new DateTime (2024, 12, 01) ); // aqui estamos creando un objeto de la clase ExpiringBeer que hereda de la clase Beer, por lo tanto tiene todas las propiedades y metodos de la clase Beer, ademas de la propiedad ExpirationDate que es propia de la clase ExpiringBeer.
 
-Console.WriteLine($"La cerveza {delirium.Name} cuesta {delirium.Price} su continenido de alcohol es {delirium.Alcohol} y su fecha de expiracion es {delirium.ExpirationDate.ToShortDateString()}"); // aqui estamos accediendo a las propiedades de la clase ExpiringBeer, que hereda de la clase Beer, por lo tanto tiene todas las propiedades y metodos de la clase Beer, ademas de la propiedad ExpirationDate que es propia de la clase ExpiringBeer.
+Console.WriteLine($"La cerveza {delirium.GetBeerInnfo("utilizando el metodo de la sobre carga")}"); // aqui estamos accediendo al metodo GetBeerInfo que es heredado de la clase Beer, por lo tanto podemos usarlo en la clase ExpiringBeer, esto es una caracteristica de la programacion orientada a objetos que nos permite reutilizar codigo y evitar la duplicacion de codigo.
+
+Console.WriteLine(delirium.GetBeerInfo()); // aqui estamos accediendo al metodo GetBeerInfo que es sobre escrito en la clase ExpiringBeer, por lo tanto nos va a mostrar la informacion de la cerveza con caducidad, esto es una forma de polimorfismo, ya que podemos tener diferentes comportamientos para el mismo metodo dependiendo de la clase que lo implemente.
+
+
