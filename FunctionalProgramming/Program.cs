@@ -32,6 +32,23 @@ Func<int, int, string> multiString   = (a, b) =>
 
 show(multiString(1, 2).ToString());
 
+List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var numerosPares = Filter(numbers, number => number % 2 == 0);
+var numerosMayore5= Filter(numbers, number => number > 5);
+
+foreach (var num in numerosPares)
+{
+    Console.WriteLine(num); // aqui estamos llamando a la funcion Filter con la lista de numeros y una funcion lambda que verifica si el numero es par, esto es una caracteristica de las funciones de primera clase, ya que podemos pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
+}
+
+foreach (var num in numerosMayore5)
+{
+    Console.WriteLine("el numero :"  + num + "Es mayor que  5"); // aqui estamos llamando a la funcion Filter con la lista de numeros y una funcion lambda que verifica si el numero es par, esto es una caracteristica de las funciones de primera clase, ya que podemos pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
+}
+
+
+
+
 
 //funcion de orden superior peude recibir parametros, puede  retornar una funcion o ambas cosas a la vez
 List<int> Filter( List<int> list , Func<int,  bool>  condition )
