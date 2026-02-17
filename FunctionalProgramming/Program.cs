@@ -31,10 +31,16 @@ Func<int, int, string> multiString   = (a, b) =>
 }; // aqui estamos definiendo una funcion de tipo Func<int, int, int> que recibe dos enteros como parametros y devuelve un entero, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener
 
 show(multiString(1, 2).ToString());
-
+Predicate<int> condition1 = x => x % 2 == 0; // aqui estamos definiendo una funcion de tipo Predicate<int> que recibe un entero como parametro y devuelve un booleano, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener
+Predicate<int> condition2 = x => x > 5;
 List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var numerosPares = Filter(numbers, number => number % 2 == 0);
-var numerosMayore5= Filter(numbers, number => number > 5);
+var numerosPares = Filter(numbers,condition1);
+var numerosMayore5= Filter(numbers, condition2);
+
+
+// aqui estamos definiendo una funcion de tipo Predicate<int> que recibe un entero como parametro y devuelve un booleano, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener
+
+
 
 foreach (var num in numerosPares)
 {
@@ -51,7 +57,7 @@ foreach (var num in numerosMayore5)
 
 
 //funcion de orden superior peude recibir parametros, puede  retornar una funcion o ambas cosas a la vez
-List<int> Filter( List<int> list , Func<int,  bool>  condition )
+List<int> Filter( List<int> list , Predicate<int>  condition )
 {
      var  resultList = new List<int>();
 
