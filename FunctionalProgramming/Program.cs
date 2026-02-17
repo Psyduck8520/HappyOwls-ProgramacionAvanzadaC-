@@ -1,4 +1,21 @@
-﻿// Esta funcion no es pura 
+﻿
+var t = TomorrowPure;// aki lo que estoy haciendo es que  t va ser nuestra funcion , esta seria una funcion de primera clase 
+Console.WriteLine(t(new DateTime(2024, 05, 01, 00, 00, 00))); // aqui estamos llamando a la funcion TomorrowPure a traves de la variable t, esto es una caracteristica de las funciones de primera clase, ya que podemos asignar funciones a variables, esto nos permite pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
+
+
+Action<string> show = Console.WriteLine; // estamos haciendo  un delegado  por que  consoloreWrite line recibe un string 
+//define funciones para tener tipado de funiciones 
+show("hola");
+
+Action<string> hi  = name  => Console.WriteLine($"Hola {name}"); // aqui estamos definiendo una funcion de tipo Action<string> que recibe un string como parametro y devuelve void, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener.
+
+hi("Edi");
+
+Action<int, int> add = (a, b) => show((a + b).ToString()) ;// aqui estamos definiendo una funcion de tipo Action<int, int> que recibe dos enteros como parametros y devuelve void, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener.
+// aki esta usando funciones lamda de una  podemos hacerlo de manera mas rapida.
+ add(5, 10); // aqui estamos llamando a la funcion add con los argumentos 5 y 10, esto es una caracteristica de las funciones de primera clase, ya que podemos llamar a funciones a traves de variables, esto nos permite pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
+
+// Esta funcion no es pura 
 
 Console.WriteLine(Tomorrow()); // esta funcion no es pura porque devuelve un valor diferente cada vez que se ejecuta, ya que depende del estado del sistema, en este caso la fecha y hora actual, esto es una caracteristica de las funciones impuras, ya que pueden devolver resultados diferentes para los mismos argumentos dependiendo del estado del sistema, esto dificulta la depuracion y mantenimiento del codigo, ya que el resultado de la funcion puede cambiar dependiendo del estado del sistema.
 //Esta si es una funcion Pura 
