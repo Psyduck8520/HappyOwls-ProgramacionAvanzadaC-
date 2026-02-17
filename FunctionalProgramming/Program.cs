@@ -15,6 +15,22 @@ Action<int, int> add = (a, b) => show((a + b).ToString()) ;// aqui estamos defin
 // aki esta usando funciones lamda de una  podemos hacerlo de manera mas rapida.
  add(5, 10); // aqui estamos llamando a la funcion add con los argumentos 5 y 10, esto es una caracteristica de las funciones de primera clase, ya que podemos llamar a funciones a traves de variables, esto nos permite pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
 
+
+///siempre  va retornar  algo , y los primero son los paramentoes 
+///
+Func<int, int, int> mul = (a, b) => a * b;// aqui estamos definiendo una funcion de tipo Func<int, int, int> que recibe dos enteros como parametros y devuelve un entero, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener
+show(mul(5,10).ToString()); 
+ // aqui estamos llamando a la funcion mul con los argumentos 5 y 10, esto es una caracteristica de las funciones de primera clase, ya que podemos llamar a funciones a traves de variables, esto nos permite pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
+
+Func<int, int, string> multiString   = (a, b) =>
+{
+    var res = a* b;
+    return res.ToString();
+}; // aqui estamos definiendo una funcion de tipo Func<int, int, int> que recibe dos enteros como parametros y devuelve un entero, esto es una caracteristica de las funciones de primera clase, ya que podemos definir funciones con tipos de datos especificos, esto nos permite tener un mejor control sobre el tipo de datos que se estan manejando en nuestro codigo, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas seguro y facil de mantener
+
+show(multiString(1, 2).ToString());
+
+
 // Esta funcion no es pura 
 
 Console.WriteLine(Tomorrow()); // esta funcion no es pura porque devuelve un valor diferente cada vez que se ejecuta, ya que depende del estado del sistema, en este caso la fecha y hora actual, esto es una caracteristica de las funciones impuras, ya que pueden devolver resultados diferentes para los mismos argumentos dependiendo del estado del sistema, esto dificulta la depuracion y mantenimiento del codigo, ya que el resultado de la funcion puede cambiar dependiendo del estado del sistema.
