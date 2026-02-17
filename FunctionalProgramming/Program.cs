@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+
 var t = TomorrowPure;// aki lo que estoy haciendo es que  t va ser nuestra funcion , esta seria una funcion de primera clase 
 Console.WriteLine(t(new DateTime(2024, 05, 01, 00, 00, 00))); // aqui estamos llamando a la funcion TomorrowPure a traves de la variable t, esto es una caracteristica de las funciones de primera clase, ya que podemos asignar funciones a variables, esto nos permite pasar funciones como argumentos a otras funciones, esto es una caracteristica de la programacion funcional que nos permite escribir codigo mas flexible y reutilizable.
 
@@ -31,12 +33,32 @@ Func<int, int, string> multiString   = (a, b) =>
 show(multiString(1, 2).ToString());
 
 
+//funcion de orden superior peude recibir parametros, puede  retornar una funcion o ambas cosas a la vez
+List<int> Filter( List<int> list , Func<int,  bool>  condition )
+{
+     var  resultList = new List<int>();
+
+    foreach ( int i in list )
+        {
+        if (condition(i))
+        {
+            resultList.Add(i);
+        }
+    }
+    return resultList;
+}
+
+
+
+
 // Esta funcion no es pura 
 
 Console.WriteLine(Tomorrow()); // esta funcion no es pura porque devuelve un valor diferente cada vez que se ejecuta, ya que depende del estado del sistema, en este caso la fecha y hora actual, esto es una caracteristica de las funciones impuras, ya que pueden devolver resultados diferentes para los mismos argumentos dependiendo del estado del sistema, esto dificulta la depuracion y mantenimiento del codigo, ya que el resultado de la funcion puede cambiar dependiendo del estado del sistema.
 //Esta si es una funcion Pura 
 Console.WriteLine(TomorrowPure(new DateTime(2024,05, 01, 00,00,00))); // esta funcion es pura porque devuelve el mismo valor cada vez que se ejecuta, ya que no depende del estado del sistema, en este caso la fecha y hora actual, esto es una caracteristica de las funciones puras, ya que siempre devuelven el mismo resultado para los mismos argumentos, esto facilita la depuracion y mantenimiento del codigo, ya que el resultado de la funcion no cambia dependiendo del estado del sistema.
 
+
+//
 
 var  beer = new Beer()
 {
