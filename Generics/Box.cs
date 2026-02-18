@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Generics
+namespace Generics // 1.Un generico nos permitereutilizar codigo y creamos clases que no esten fijadas a un tipo de dato
 {
-    public class Box <T> // ponemos una T, por convension, para indicar que es un tipo generic, son  importantes 
-        //en las convenciones 
-
+    public class Box <T> //  esta T es lo recomendado, convenciones son importantes en la programaciones. 
     {
-        private readonly T _value; // creamos una variable privada de tipo T  no sabes que sea pero va a ser un tipo
+        private  readonly  T _value; // 2. esta T es un tipo de dato generico, puede ser cualquier tipo de dato, int, string, etc.
+        
+        public Box(T value) // 3. el constructor de la clase Box recibe un parametro de tipo T, que es el valor que se va a almacenar en la caja.
+        {
+            _value = value; // 4. el valor se asigna a la variable _value, que es de tipo T.
+        }
+        public  string GetContent()  
+            =>  _value.ToString(); // 5. el metodo GetContent devuelve el contenido de la caja como una cadena, utilizando el metodo ToString() del tipo T.
 
-        public Box(T  value) => _value =value; // creamos un constructor que recibe un parametro de tipo T, no se que recibe algo
-
-
-       public  string GetContent() => _value.ToString(); // creamos un metodo que devuelve el contenido de la caja como string
-       
 
     }
 }
