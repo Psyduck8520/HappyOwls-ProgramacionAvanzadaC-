@@ -33,3 +33,18 @@ void  Show<T>(IRepository<T> repository) // 12. se define una funcion generica S
 }
 
 
+// Agregamos un delegado a una fucion 
+Action < IRepository<string> > s = Show;
+//Guardo la funcion dentro de mi variable
+s(beerRepository);
+
+
+Operation<int> add = (x, y) => x + y; // 19. se crea una instancia del delegado Operation, especificando el tipo de dato int, y se le asigna una expresion lambda que recibe dos parametros x e y, y devuelve la suma de ambos, esto nos permite crear una operacion matematica generica de suma para enteros.
+// delegados hacer una referencia a un metodo hay delegados que son predefinidos  como Action, Func, Predicate, etc. pero tambien podemos crear nuestros propios delegados, y estos pueden ser genericos, por ejemplo:
+Operation<double> addDouble = (s1, s2) => s1 + s2; // 20. se crea
+                                                     // otra instancia del delegado Operation, especificando el tipo de dato string, y se le asigna una expresion lambda que recibe dos parametros s1 y s2, y devuelve la concatenacion de ambos, esto nos permite crear una operacion matematica generica de concatenacion para cadenas.
+Console.WriteLine(add(5, 10)); // 20. se llama al delegado add, pasando como argumentos los valores 5 y 10, esto nos permite ejecutar la operacion de suma definida en el delegado, y se imprime el resultado en la consola, que es 15.
+Console.WriteLine(addDouble(3.5, 2.5)); // 21. se llama al delegado addDouble, pasando como argumentos los valores 3.5 y 2.5, esto nos permite ejecutar la operacion de suma definida en el delegado, y se imprime el resultado en la consola, que es 6.0.
+delegate T Operation<T>(T  element1, T  element2); // 18. se define un delegado generico Operation que recibe dos parametros de tipo T y devuelve un int, esto nos permite crear operaciones matematicas genericas, como suma, resta, multiplicacion, etc.
+
+
