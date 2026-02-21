@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Generics
 {
-    internal class Beer
+     public class Beer : Drink , Iinfo
     {
+        private string _name;
+        
+       public string Name
+            {
+                get => _name;
+            }
+       
+        public Beer(string name, double quantity) : base(quantity)
+            => _name = name;
+
+        public string GetInfo()
+              =>  _name  + " tiene una cantidad de " + Quantity + " ml"; 
     }
 }
