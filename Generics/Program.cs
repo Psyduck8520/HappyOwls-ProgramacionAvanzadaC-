@@ -76,4 +76,3 @@ delegate T Operation<T>(T  element1, T  element2) where T : struct  ; // 18. se 
 //2. Struct  cuando lo pasamos por parametro  lo que  se haga dentro de esa funcion no se modifica el original, porque se pasa por valor, mientras que las clases se pasan por referencia, lo que se haga dentro de esa funcion si se modifica el original, porque se pasa por referencia.
 
 //Objetos se guarada en referencia,  
-///
