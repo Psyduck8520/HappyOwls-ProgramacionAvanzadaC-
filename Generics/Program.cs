@@ -63,16 +63,42 @@ s(beerRepository);
 
 
 
+
 Operation<int> add = (x, y) => x + y; // 19. se crea una instancia del delegado Operation, especificando el tipo de dato int, y se le asigna una expresion lambda que recibe dos parametros x e y, y devuelve la suma de ambos, esto nos permite crear una operacion matematica generica de suma para enteros.
 // delegados hacer una referencia a un metodo hay delegados que son predefinidos  como Action, Func, Predicate, etc. pero tambien podemos crear nuestros propios delegados, y estos pueden ser genericos, por ejemplo:
 Operation<double> addDouble = (s1, s2) => s1 + s2; // 20. se crea
 //Operation<string> concatenate = (a , b) => a + "" + b ;                                                      // otra instancia del delegado Operation, especificando el tipo de dato string, y se le asigna una expresion lambda que recibe dos parametros s1 y s2, y devuelve la concatenacion de ambos, esto nos permite crear una operacion matematica generica de concatenacion para cadenas.
 Console.WriteLine(add(5, 10)); // 20. se llama al delegado add, pasando como argumentos los valores 5 y 10, esto nos permite ejecutar la operacion de suma definida en el delegado, y se imprime el resultado en la consola, que es 15.
 Console.WriteLine(addDouble(3.5, 2.5)); // 21. se llama al delegado addDouble, pasando como argumentos los valores 3.5 y 2.5, esto nos permite ejecutar la operacion de suma definida en el delegado, y se imprime el resultado en la consola, que es 6.0.
+
+var  pool   = new ObjectPool<Clock>(5); // 22. se crea una instancia de la clase ObjectPool, especificando el tipo de dato Beer, y el numero de objetos en el pool, esto nos permite crear un pool de objetos del tipo Beer, con una capacidad de 5 objetos.
+// puede entrar por que clock no recibe elementos 
+
+
+while(pool.Count > 0) // 23. se utiliza un bucle while para obtener objetos del pool mientras haya objetos disponibles, esto nos permite demostrar el funcionamiento del pool de objetos, y se imprime cada objeto obtenido en la consola.
+{
+    var clock = pool.Get(); // 24. se llama al metodo Get del pool, esto nos permite obtener un objeto del tipo Clock del pool, y se asigna a la variable clock.
+    Console.WriteLine(clock.Date); // 25. se imprime el valor de la variable clock, que es un objeto del tipo Clock obtenido del pool.
+}
+
+var poolNumber  =  new ObjectPool< Randoms>(3); // 26. se crea otra instancia de la clase ObjectPool, especificando el tipo de dato int, y el numero de objetos en el pool, esto nos permite crear un pool de objetos del tipo int, con una capacidad de 3 objetos.
+
+while (poolNumber.Count > 0) // 23. se utiliza un bucle while para obtener objetos del pool mientras haya objetos disponibles, esto nos permite demostrar el funcionamiento del pool de objetos, y se imprime cada objeto obtenido en la consola.
+{
+    var  number  =poolNumber.Get(); // 24. se llama al metodo Get del pool, esto nos permite obtener un objeto del tipo Clock del pool, y se asigna a la variable clock.
+    Console.WriteLine(number.Number); // 25. se imprime el valor de la variable clock, que es un objeto del tipo Clock obtenido del pool.
+}
+
+// se puede hacr pra fabricas de objetos que no  reciban parametros
+//, como por ejemplo un pool de hilos, o un pool de conexiones a una base de datos, etc.
+
+
 delegate T Operation<T>(T  element1, T  element2) where T : struct  ; // 18. se define un delegado generico Operation que recibe dos parametros de tipo T y devuelve un int, esto nos permite crear operaciones matematicas genericas, como suma, resta, multiplicacion, etc.
 
 //Restricciones de TIPO
 // 1. EL INT es un struc , string es una clase.
 //2. Struct  cuando lo pasamos por parametro  lo que  se haga dentro de esa funcion no se modifica el original, porque se pasa por valor, mientras que las clases se pasan por referencia, lo que se haga dentro de esa funcion si se modifica el original, porque se pasa por referencia.
 
-//Objetos se guarada en referencia,  
+//Restricciones por constructor ,  pool tien un grupo de objetos
+// o un pool de hilos  
+
