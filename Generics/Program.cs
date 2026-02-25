@@ -102,3 +102,4 @@ delegate T Operation<T>(T  element1, T  element2) where T : struct  ; // 18. se 
 //Restricciones por constructor ,  pool tien un grupo de objetos
 // o un pool de hilos  
 
+
