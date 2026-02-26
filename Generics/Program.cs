@@ -92,7 +92,6 @@ while (poolNumber.Count > 0) // 23. se utiliza un bucle while para obtener objet
 // se puede hacr pra fabricas de objetos que no  reciban parametros
 //, como por ejemplo un pool de hilos, o un pool de conexiones a una base de datos, etc.
 
-
 delegate T Operation<T>(T  element1, T  element2) where T : struct  ; // 18. se define un delegado generico Operation que recibe dos parametros de tipo T y devuelve un int, esto nos permite crear operaciones matematicas genericas, como suma, resta, multiplicacion, etc.
 
 //Restricciones de TIPO
